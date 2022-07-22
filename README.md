@@ -26,7 +26,7 @@ From the documentation follow the steps;
 [https://developers.facebook.com/docs/whatsapp/cloud-api/get-started](https://developers.facebook.com/docs/whatsapp/cloud-api/get-started)
 
 
-Note: The `WHATSAPP_PHONE_ID` is on `Send and receive messages` section inside the `WhatsApp` product in `Meta for developers` page.
+Note: The `WHATSAPP_PHONE_ID` is on `Send and receive messages` section inside the `WhatsApp` product in `Meta for developers` page. The `VERIFY_TOKEN` is a string create by yourself, this can be any string, this is used to verify the callback URL.
 
 ### Start the server
 
