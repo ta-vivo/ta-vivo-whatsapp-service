@@ -16,6 +16,12 @@ Create the `.env` file into `api` directory, use the `example.env` file;
 cp example.env .env
 ```
 
+Create a simple JWT to make requests;
+
+```bash
+node src/utils/createJWT.js
+```
+
 Now follow the Meta documentation to get the `WHATSAPP_PHONE_ID` and `WHATSAPP_TOKEN`;
 
 From the documentation follow the steps;
