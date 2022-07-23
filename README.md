@@ -63,5 +63,19 @@ The principal functions of the service are:
 }
 ```
 
+## Docker
+
+For development you can use the `docker-compose.dev.yml` file;
+
+```bash
+docker-compose -f docker-compose.dev.yml up
+```
+
+For production you can use the `docker-compose.yml` file;
+
+```bash
+docker-compose up
+```
+
 ---
 :heart:

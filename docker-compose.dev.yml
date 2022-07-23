@@ -1,0 +1,26 @@
+version: '3'
+services:
+  ta-vivo-whatsapp-service:
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+    labels:
+      - "traefik.http.routers.ta-vivo-whatsapp-service.rule=Host(`${DOMAIN}`)"
+      # - "traefik.http.routers.ta-vivo-whatsapp-service.entrypoints=websecure"
+      # - "traefik.http.routers.ta-vivo-whatsapp-service.tls.certresolver=myresolver"
+      - "traefik.http.services.ta-vivo-whatsapp-service.loadbalancer.server.port=${PORT}"
+      - "traefik.http.middlewares.ta-vivo-whatsapp-service.ratelimit.average=15"
+      - "traefik.http.middlewares.ta-vivo-whatsapp-service.ratelimit.burst=15"
+      - "traefik.http.routers.ta-vivo-whatsapp-service.middlewares=ta-vivo-whatsapp-service@docker"
+    volumes:
+      - ./:/usr/src/app
+      - ../node_modules/:/usr/src/node_modules
+    ports:
+      - ${PORT}:${PORT}
+    networks:
+      - traefik_proxynet
+    
+networks:
+  traefik_proxynet:
+    external:
+      name: traefik_proxynet
