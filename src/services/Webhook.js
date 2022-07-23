@@ -30,22 +30,24 @@ class Webhook {
   }
 
   static async listenMessages(req, res) {
-    let body = req.body;
+    try {
+      // info on WhatsApp text message payload: https://developers.facebook.com/docs/whatsapp/cloud-api/webhooks/payload-examples#text-messages
+      if (req.body.object) {
+        if (isValidBodyEntry(req.body)) {
 
-    // info on WhatsApp text message payload: https://developers.facebook.com/docs/whatsapp/cloud-api/webhooks/payload-examples#text-messages
-    if (req.body.object) {
-      if (isValidBodyEntry(req.body)) {
-        let phone_number_id =
-          req.body.entry[0].changes[0].value.metadata.phone_number_id;
-        let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
-        let msg_body = req.body.entry[0].changes[0].value.messages[0].text.body; // extract the message text from the webhook payload
+          let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
+          let message = req.body.entry[0].changes[0].value.messages[0].text.body; // extract the message text from the webhook payload
 
-        MessagesService.sendMessage({ to: from, message: msg_body });
+          // Send back the same message
+          MessagesService.sendMessage({ to: from, message: message });
+        }
+        res.sendStatus(200);
+      } else {
+        // Return a '404 Not Found' if event is not from a WhatsApp API
+        res.sendStatus(404);
       }
-      res.sendStatus(200);
-    } else {
-      // Return a '404 Not Found' if event is not from a WhatsApp API
-      res.sendStatus(404);
+    } catch (error) {
+      console.log(error);
     }
   }
 }
