@@ -4,6 +4,18 @@ This is a WhatsApp service for Ta-vivo or any other project to send and receive 
 
 :warning: For developments, you need HTTPS to work, at this point I recommend using ngrok to make an HTTPS tunnel (Check the docs below).
 
+---
+
+# Table of content
+
+  - [Get started](#get-started)
+    - [Get the access token from Meta](#get-the-access-token-from-meta)
+    - [Start the server](#start-the-server)
+  - [Endpoints](#endpoints)
+  - [Docker](#docker)
+
+---
+
 ## Get started
 
 ```bash
@@ -21,6 +33,8 @@ Create a simple JWT to make requests;
 ```bash
 node src/utils/createJWT.js
 ```
+
+### Get the access token from Meta
 
 Now follow the Meta documentation to get the `WHATSAPP_PHONE_ID` and `WHATSAPP_TOKEN`;
 
