@@ -11,7 +11,7 @@
   },
   "scripts": {
     "dev": "nodemon src/index.js --exec babel-node --es-module-specifier-resolution=node",
-    "build": "babel src --out-dir dist",
+    "build": "babel src --out-dir dist --presets minify --no-comments",
     "start": "node dist/index.js"
   },
   "keywords": [],
@@ -32,6 +32,7 @@
     "@babel/plugin-transform-runtime": "^7.10.4",
     "@babel/preset-env": "^7.10.4",
     "babel-eslint": "^10.1.0",
+    "babel-preset-minify": "^0.5.2",
     "nodemon": "^2.0.19"
   }
 }
