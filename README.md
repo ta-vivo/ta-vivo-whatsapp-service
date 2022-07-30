@@ -77,6 +77,29 @@ The principal functions of the service are:
 }
 ```
 
+- **POST** `/messages/send-message-template`: Send a template message;
+
+```json
+  {
+      "phone": "18099982632",
+      "template": {
+        "name": "unique_code_request",
+        "components": [
+          {
+            "type": "body",
+            "parameters": [
+              {
+                "type": "text",
+                "text": "unicode or the message"
+              }
+            ]
+          }
+        ]
+      }
+  }
+  ```
+Read more about the templates [here](https://developers.facebook.com/docs/whatsapp/cloud-api/guides/send-message-templates#text-based)
+
 ## Docker
 
 For development you can use the `docker-compose.dev.yml` file;
