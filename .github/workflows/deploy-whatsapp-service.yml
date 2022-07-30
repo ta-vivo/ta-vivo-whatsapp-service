@@ -16,16 +16,6 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      # Prepare for run tests
-      - uses: actions/checkout@v3
-      - name: Use Node.js 16.x
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16.x'
-      - name: Install dependencies
-        run: yarn --frozen-lockfile
-      - name: Run tests
-        run: yarn test
       # Checks out a copy of your repository on the ubuntu-latest machine
       - name: Connect to server via SSH
         uses: appleboy/ssh-action@master
