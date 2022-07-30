@@ -8,16 +8,20 @@ class MessagesService {
       return axios({
         method: "POST",
         url:
-          "https://graph.facebook.com/v12.0/" +
+          "https://graph.facebook.com/v13.0/" +
           phoneNumberId +
-          "/messages?access_token=" +
-          token,
+          "/messages",
         data: {
           messaging_product: "whatsapp",
+          recipient_type: "individual",
           to: to,
-          text: { body: message },
+          type: "text",
+          text: { preview_url: false, body: message },
         },
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", "Authorization": "Bearer " + token },
+      })
+      .then(response => {
+        console.log(`message sent to ${to}`);
       })
       .catch(() => {
         throw { message: 'Error to send message' };
