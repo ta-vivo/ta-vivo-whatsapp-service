@@ -13,7 +13,7 @@ class MessagesService {
       type: "template",
       template: { ...template, language: { code: "en" } }
     }
-    const url = `https://graph.facebook.com/v13.0/${phoneNumberId}/messages`;
+    const url = `https://graph.facebook.com/v14.0/${phoneNumberId}/messages`;
 
     try {
       return axios({
@@ -41,7 +41,7 @@ class MessagesService {
       return axios({
         method: "POST",
         url:
-          "https://graph.facebook.com/v13.0/" +
+          "https://graph.facebook.com/v14.0/" +
           phoneNumberId +
           "/messages",
         data: {
