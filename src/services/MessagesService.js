@@ -13,7 +13,7 @@ class MessagesService {
       type: "template",
       template: { ...template, language: { code: "en" } }
     }
-    const url = `https://graph.facebook.com/v14.0/${phoneNumberId}/messages`;
+    const url = `https://graph.facebook.com/v20.0/${phoneNumberId}/messages`;
 
     try {
       return axios({
@@ -33,7 +33,7 @@ class MessagesService {
       throw error;
     }
   }
-  
+
   static async sendMessage({ to, message }) {
     const token = process.env.WHATSAPP_TOKEN;
     const phoneNumberId = process.env.WHATSAPP_PHONE_ID;
